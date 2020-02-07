@@ -19,7 +19,9 @@ def is_satisfable(clauses):
     else:
         for i in range(len(clauses)):
             for j in range(i + 1, len(clauses)):
-                if resolvent(clauses[i], clauses[j]) is not None:
+                if type(resolvent(clauses[i], clauses[j])) != list:
+                    continue
+                elif resolvent(clauses[i], clauses[j]) is not None:
                     res2 = resolvent(clauses[i], clauses[j])
                     if len(resolvent(clauses[i], clauses[j])) == 0:
                         return False
